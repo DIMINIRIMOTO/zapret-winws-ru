@@ -9,8 +9,8 @@
 * preset_general.cmd - Базовый вариант, не редактированый. (Не работает)
 * service_create.cmd - Базовый вариант службы, не редактированый. (Не работает)
 * service_remove.cmd - Удаление службы приложения.
-* preset_general(ALT).cmd - Альтернативный вариант.
-* service_create(ALT).cmd - Альтернативный вариант службы.
+* preset_general(ALT).cmd - Альтернативный вариант. (Работает)
+* service_create(ALT).cmd - Альтернативный вариант службы. (Работает)
 * service_remove(ALT).cmd - Удаление службы приложения.
 * windivert_remove.bat - Удаление приложения без перезапуска системы.
  

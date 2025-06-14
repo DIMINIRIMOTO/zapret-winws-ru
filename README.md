@@ -6,8 +6,8 @@
 
 ## Краткое описание файлов
 
-* preset_general.cmd - Базовый вариант, не редактированый.
-* service_create.cmd - Базовый вариант службы, не редактированый.
+* preset_general.cmd - Базовый вариант.
+* service_create.cmd - Базовый вариант службы.
 * service_remove.cmd - Удаление службы приложения.
 * preset_general(ALT).cmd - Альтернативный вариант.
 * service_create(ALT).cmd - Альтернативный вариант службы.

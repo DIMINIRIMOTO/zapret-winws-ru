@@ -1,4 +1,4 @@
-1cloudflare-ech.com
+cloudflare-ech.com
 dis.gd
 discord-attachments-uploads-prd.storage.googleapis.com
 discord.app

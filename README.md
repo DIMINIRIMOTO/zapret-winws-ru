@@ -6,11 +6,11 @@
 
 ## Краткое описание файлов
 
-* preset_general.cmd - Базовый вариант.
-* service_create.cmd - Базовый вариант службы.
+* preset_general.cmd - Обход иностранных сайтов + игр.
+* service_create.cmd - Установка службы.
 * service_remove.cmd - Удаление службы приложения.
-* preset_general(ALT).cmd - Альтернативный вариант.
-* service_create(ALT).cmd - Альтернативный вариант службы.
+* preset_general(ALT).cmd - Обход иностранных сайтов.
+* service_create(ALT).cmd - Установка службы.
 * service_remove(ALT).cmd - Удаление службы приложения.
 * windivert_remove.bat - Удаление приложения без перезапуска системы.
  

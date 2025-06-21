@@ -1,4 +1,12 @@
 @echo off
+pushd "%~dp0"
+
+sc query zapret >nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+    sc stop "zapret"
+    sc delete "zapret"
+)
+chcp 1251 > nul
 
 cd /d "%~dp0"
 set BIN_PATH=%~dp0bins\
@@ -14,12 +22,8 @@ set ARGS=^
 --filter-udp=444-65535 --ipset="%~dp0files\ipset-general.txt" --dpi-desync-ttl=8 --dpi-desync-repeats=20 --dpi-desync-fooling=none --dpi-desync-any-protocol=1 --dpi-desync-fake-unknown-udp="%~dp0files\quic_initial_www_google_com.bin" --dpi-desync=fake --dpi-desync-cutoff=n10 --new ^
 --filter-udp=50000-50099 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6
 
-set SRVCNAME=zapret
-
-net stop "%SRVCNAME%"
-sc delete "%SRVCNAME%"
-sc create "%SRVCNAME%" binPath= "\"%BIN_PATH%winws.exe\" %ARGS%" DisplayName= "zapret DPI bypass : winws1" start= auto
-sc description "%SRVCNAME%" "zapret DPI bypass software"
-sc start "%SRVCNAME%"
+sc create "zapret" binPath= "\"%BIN_PATH%winws.exe\" %ARGS%" DisplayName= "zapret DPI bypass : winws1" start= auto
+sc description "zapret" "zapret DPI bypass software"
+sc start "zapret"
 
 pause

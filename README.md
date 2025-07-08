@@ -6,12 +6,13 @@
 
 ## Краткое описание файлов
 
-* preset_general.cmd - Обход иностранных сайтов + игр.
+* preset_general.cmd - Обход только Discord + YouTube.
 * service_create.cmd - Установка службы.
-* service_remove.cmd - Удаление службы приложения.
 * preset_general(ALT).cmd - Обход иностранных сайтов.
 * service_create(ALT).cmd - Установка службы.
-* service_remove(ALT).cmd - Удаление службы приложения.
+* preset_general(ALT2).cmd - Обход иностранных сайтов + игр.
+* service_create(ALT2).cmd - Установка службы.
+* service_remove.cmd - Удаление службы приложения.
 * windivert_remove.bat - Удаление приложения без перезапуска системы.
  
 ### Исполняймые файлы нужно запускать от имени Администратора 

@@ -8,7 +8,7 @@
 
 * preset_general.cmd - Обход только Discord + YouTube.
 * service_create.cmd - Установка службы.
-* preset_general(ALT).bat - Обход иностранных сайтов + Игр.
+* preset_general(ALT).bat - Обход иностранных сайтов + Игр (не всех).
 * service_create(ALT).bat - Установка службы.
 * game_filter_switcher.bat - Переключение обхода игр.
 * service_remove.cmd - Удаление службы приложения.

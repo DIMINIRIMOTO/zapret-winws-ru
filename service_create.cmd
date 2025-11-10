@@ -18,4 +18,3 @@ sc create "zapret" binPath= "\"%BIN_PATH%winws.exe\" %ARGS%" DisplayName= "zapre
 sc description "zapret" "zapret DPI bypass software"
 sc start "zapret"
 pause
-

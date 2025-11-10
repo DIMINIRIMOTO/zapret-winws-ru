@@ -28,7 +28,7 @@ pause
 goto MENU
 
 :DISABLE
-set "searchText=1024-65535"
+set "searchText=444-65535"
 set "replaceText=12"
 call :ReplaceInFile "%file1%" "%searchText%" "%replaceText%"
 call :ReplaceInFile "%file2%" "%searchText%" "%replaceText%"
@@ -38,7 +38,7 @@ exit
 
 :ENABLE
 set "searchText=12"
-set "replaceText=1024-65535"
+set "replaceText=444-65535"
 call :ReplaceInFile "%file1%" "%searchText%" "%replaceText%"
 call :ReplaceInFile "%file2%" "%searchText%" "%replaceText%"
 echo GAME FILTER ENABLE.
@@ -70,4 +70,5 @@ set "tempFile=%temp%\temp_%RANDOM%.txt"
     )
 )
 move /Y "%tempFile%" "%targetFile%"
+
 exit /b

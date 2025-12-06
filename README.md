@@ -8,7 +8,7 @@
 
 * preset_general(ALT).bat - Обход иностранных сайтов + Игр.
 * service_create(ALT).bat - Установка службы.
-* preset_general(ALT2).bat - Обход иностранных сайтов + Игр(2).
+* preset_general(ALT2).bat - Обход иностранных сайтов + Игр(Упрощенный).
 * service_create(ALT2) - Установка службы.
 * game_filter_switcher.bat - Переключение обхода игр.
 * ipset_filter_switcher.bat - Переключение обхода айпи-адрессов.

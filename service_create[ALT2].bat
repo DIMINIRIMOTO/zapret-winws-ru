@@ -5,7 +5,7 @@ IF %ERRORLEVEL% EQU 0 (
     sc stop "zapret"
     sc delete "zapret"
 )
-chcp 1251 > nul
+chcp 65001 > nul
 cd /d "%~dp0"
 call universal.bat load_game_filter
 echo:
@@ -24,4 +24,5 @@ sc create "zapret" binPath= "\"%BIN_PATH%winws.exe\" %ARGS%" DisplayName= "zapre
 sc description "zapret" "zapret DPI bypass software"
 sc start "zapret"
 pause
+
 

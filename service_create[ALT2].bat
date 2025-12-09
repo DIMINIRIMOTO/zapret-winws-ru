@@ -8,6 +8,7 @@ IF %ERRORLEVEL% EQU 0 (
 chcp 1251 > nul
 cd /d "%~dp0"
 call universal.bat load_game_filter
+echo:
 set BIN_PATH=%~dp0bins\
 set ARGS=^
 --wf-tcp=80,443,%GameFilter% --wf-udp=443,50000-50099,%GameFilter% ^
@@ -23,3 +24,4 @@ sc create "zapret" binPath= "\"%BIN_PATH%winws.exe\" %ARGS%" DisplayName= "zapre
 sc description "zapret" "zapret DPI bypass software"
 sc start "zapret"
 pause
+

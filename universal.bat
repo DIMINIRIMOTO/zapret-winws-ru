@@ -50,7 +50,7 @@ if exist "%gameFlagFile%" (
     set "GameFilter=1024-65535"
 ) else (
     set "GameFilterStatus=OFF"
-    set "GameFilter=0"
+    set "GameFilter=12"
 )
 exit /b
 
@@ -146,4 +146,5 @@ goto menu
 :exit
 echo GOOD LUCK
 pause
+
 exit

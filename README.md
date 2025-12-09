@@ -7,7 +7,7 @@
 ## Краткое описание файлов
 
 * preset_general(ALT).bat - Обход иностранных сайтов + Игр.
-* * service_create[ALT1].bat - Установка службой.
+* service_create[ALT1].bat - Установка службой.
 * preset_general(ALT2).bat - Обход иностранных сайтов + Игр(Упрощенный).
 * service_create[ALT2].bat - Установка службой.
 * universal.bat - Основной менеджер для работы с приложением. 

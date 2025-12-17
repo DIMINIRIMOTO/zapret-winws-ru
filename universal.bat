@@ -134,10 +134,11 @@ goto menu
 ::DELETE APP
 :delete_app
 @echo off
-net stop "WinDivert"
-sc delete "WinDivert"
-net stop "WinDivert14"
-sc delete "WinDivert14"
+net stop "WinDivert" >nul 2>&1
+sc delete "WinDivert" >nul 2>&1
+net stop "WinDivert14" >nul 2>&1
+sc delete "WinDivert14" >nul 2>&1
+echo ZAPRET REMOVE
 pause
 ::RETURN MENU
 goto menu
@@ -146,4 +147,5 @@ goto menu
 :exit
 echo GOOD LUCK
 pause
+
 exit

@@ -99,7 +99,7 @@ if !errorlevel!==0 (
         del /f /q "%listFile%"
         ren "%backupFile%" "ipset-general.txt"
     ) else (
-        echo 1
+        echo ERROR READING BACKUP
     )
 
 ) else (
@@ -148,3 +148,4 @@ goto menu
 echo GOOD LUCK
 pause
 exit
+

@@ -7,7 +7,7 @@ cd /d "%~dp0"
 :menu
 echo ==========================================
 echo 1. START ZAPRET
-echo 2. INSTAL SERVICE
+echo 2. INSTALL SERVICE
 echo 3. EXIT
 echo ==========================================
 set /p choice=ENTER CHOICE (1-3):
@@ -61,3 +61,4 @@ exit /b
 echo GOOD LUCK
 pause
 exit
+

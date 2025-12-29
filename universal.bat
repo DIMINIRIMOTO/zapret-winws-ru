@@ -179,6 +179,8 @@ goto menu
 ::DELETE DISCORD FIX (REVERT)
 :delete_discord_fix
 @echo off
+
+::Kostilb
 setlocal
 
 ::LOAD FILES
@@ -204,3 +206,4 @@ goto menu
 echo GOOD LUCK
 pause
 exit
+

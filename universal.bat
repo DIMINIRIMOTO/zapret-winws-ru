@@ -2,6 +2,7 @@
 ::LOAD
 if "%~1"=="load_game_filter" (
     call :game_switch_status
+	call :tcp_enable
     exit /b
 )
 ::ADMIN
@@ -40,6 +41,11 @@ if "%menu_choice%"=="5" goto discord_fix
 if "%menu_choice%"=="6" goto delete_discord_fix
 if "%menu_choice%"=="7" goto exit
 goto menu
+
+::TCP WINDOWS ENABLE
+:tcp_enable
+netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul || netsh interface tcp set global timestamps=enabled > nul 2>&1
+exit /b
 
 ::GAME FILTER SWITCHER
 :game_switch_status
@@ -197,3 +203,4 @@ goto menu
 echo GOOD LUCK
 pause
 exit
+

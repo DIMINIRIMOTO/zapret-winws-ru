@@ -16,3 +16,5 @@ yt-video-upload.l.google.com
 ytimg.com
 ytimg.l.google.com
 play.google.com
+gstatic.com
+google.ru

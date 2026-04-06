@@ -14,7 +14,7 @@
 * (ALL) - Включает полную работу как с TCP, так и с UDP.
 * (TCP) - Включает работу ток с TCP.
 * (UDP) - Включает работу ток с UDP.
-* 
+
 # Гайд как использовать Игровой Фильтр (NEW) [видео](https://drive.google.com/file/d/1F932DfmmzvMp9gl2KQ79Kdg6ExllqNLo/view?usp=sharing)
 
 # Режим айпсет фильтра:

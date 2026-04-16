@@ -162,7 +162,7 @@ set "listFile=%~dp0files\ipset-general.txt"
 set "backupFile=%listFile%.old"
 ::SWITCHER/IPSETS
 if "%IPsetStatus%"=="ENABLED" (
-    echo IN THIS MODE, THE CURRENT WORKS WITH ADDRESSES FROM THE FILE.
+    echo THE SETTING HAVE BEEN APPLIED, PLEASE RESTART THE APPLICATION.
     if not exist "%backupFile%" (
         ren "%listFile%" "ipset-general.txt.old"
     ) else (
@@ -173,12 +173,12 @@ if "%IPsetStatus%"=="ENABLED" (
         echo 203.0.113.113/32
     )
 ) else if "%IPsetStatus%"=="DISABLED" (
-    echo TURNS OFF THIS MODE COMPLETELY.
+    echo THE SETTING HAVE BEEN APPLIED, PLEASE RESTART THE APPLICATION.
     >"%listFile%" (
     rem CREATE EMPTY FILE.
     )
 ) else if "%IPsetStatus%"=="EMPTY" (
-    echo THIS MODE SHOULD WORK WITH ALL ADDRESSES, BUT I'M NOT SURE IT ACTUALLY WORKS.
+    echo THE SETTING HAVE BEEN APPLIED, PLEASE RESTART THE APPLICATION.
     if exist "%backupFile%" (
         del /f /q "%listFile%"
         ren "%backupFile%" "ipset-general.txt"

@@ -83,7 +83,7 @@ for /f "usebackq delims=" %%A in ("%gameFlagFile%") do (
 )
 ::LOAD MODE
 if /i "%GameFilterMode%"=="all" (
-    set "GameFilterStatus=ENABLED [ALL]"
+    set "GameFilterStatus=ENABLED [TCP/UDP]"
     set "GameFilterTCP=1024-65535"
     set "GameFilterUDP=1024-65535"
 ) else if /i "%GameFilterMode%"=="tcp" (
@@ -106,7 +106,7 @@ cls
 echo ==========================================
 echo GAME FILTER MODE SELECTION:
 echo   0. DISABLED
-echo   1. ENABLED [ALL]
+echo   1. ENABLED [TCP/UDP]
 echo   2. ENABLED [TCP]
 echo   3. ENABLED [UDP]
 echo ==========================================

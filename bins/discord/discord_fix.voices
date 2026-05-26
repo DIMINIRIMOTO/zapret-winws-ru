@@ -205,12 +205,3 @@
 185.199.108.133 avatars.githubusercontent.com
 185.199.109.133 release-assets.githubusercontent.com
 185.199.108.133 private-user-images.githubusercontent.com
-#Cloudflare
-1.1.1.1 one.one.one.one
-2606:4700:4700::1111 one.one.one.one
-#Google
-8.8.8.8 dns.google
-2001:4860:4860::8888 dns.google
-#OpenDNS
-146.112.41.2 doh.opendns.com
-2620:119:fc::2 doh.opendns.com

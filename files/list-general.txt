@@ -1,9 +1,3 @@
-github.com
-github.io
-github.blog
-github.community
-githubassets.com
-githubusercontent.com
 cloudflare-ech.com
 encryptedsni.com
 cloudflareaccess.com

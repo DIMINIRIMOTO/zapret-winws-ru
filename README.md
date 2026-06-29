@@ -1,5 +1,5 @@
 # zapret-winws-ru
-Сделан для обхода ограничений в России.
+* Сделан для обхода ограничений в России.
 
 ## Оригинальный софт
 [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle) 

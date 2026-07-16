@@ -25,7 +25,8 @@
 ## После отката исправлений голосовых каналов: Discord (Происходит откат файла: Hosts в оригинальный чистый файл: Windows 7/8.1/10/11)
 ## Режим: EMPTY, может сломать многие сайты, игры используйте на свой страх, риск.
 
-# Если у вас не работает гитхаб, есть ссылка на [гугл](https://drive.google.com/file/d/18DBZG8F4burqfiTx0qxkz7sk_HX2uZkt/view?usp=drive_link)
+# Если у вас не работает гитхаб, есть ссылка на [Гугл-Диск](https://drive.google.com/file/d/18DBZG8F4burqfiTx0qxkz7sk_HX2uZkt/view?usp=drive_link)
+
 # Гайд как использовать данную утилиту [Гит-Хаб](https://github.com/DIMINIRIMOTO/zapret-winws-ru/wiki/%D0%9A%D0%B0%D0%BA-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B4%D0%B0%D0%BD%D0%BD%D1%83%D1%8E-%D1%83%D1%82%D0%B8%D0%BB%D0%B8%D1%82%D1%83)
 
 * Если боитесь качать с гуглдиска, то не качайте, хотя там вирусов нет, все тоже самое что и тут!

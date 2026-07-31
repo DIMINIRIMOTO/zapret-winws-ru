@@ -1,6 +1,6 @@
 # 🛡️ zapret-winws-ru
 
-Утилита для тонкой настройки и обхода ограничений сети в РФ на базе оригинального софта [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle).
+Утилита для тонкой настройки и обхода ограничений в РФ на базе оригинального софта [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle).
 
 ---
 

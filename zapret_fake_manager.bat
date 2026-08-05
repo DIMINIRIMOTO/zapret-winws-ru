@@ -17,7 +17,7 @@ if %errorlevel% neq 0 (
 cd /d "%~dp0"
 
 :: Set path to the log file inside your bins folder
-set "LOG_FILE=%~dp0bins\zapret_info.txt"
+set "LOG_FILE=%~dp0bins\zapret_fake.status"
 set "DISCORD_TARGET=ACTIVE_DISCORD_UDP.bin"
 set "GAME_TARGET=ACTIVE_GAME_UDP.bin"
 

@@ -1,0 +1,46 @@
+#Discord
+162.159.138.232 discord.com
+162.159.137.232 discord.com
+162.159.128.233 discord.com
+162.159.135.232 discord.com
+162.159.138.232 updates.discord.com
+162.159.137.232 updates.discord.com
+162.159.128.233 updates.discord.com
+162.159.135.232 updates.discord.com
+#GitHub
+185.199.108.133 desktop.githubusercontent.com
+185.199.109.133 objects.githubusercontent.com
+185.199.109.133 raw.githubusercontent.com
+185.199.109.133 release-assets.githubusercontent.com
+185.199.108.133 private-user-images.githubusercontent.com
+185.199.108.133 gist.githubusercontent.com
+185.199.108.133 avatars.githubusercontent.com
+#Cloudflare
+1.1.1.1 one.one.one.one
+2606:4700:4700::1111 one.one.one.one
+#Google
+8.8.4.4 dns.google
+2001:4860:4860::8844 dns.google
+#Quad9
+9.9.9.9 dns.quad9.net
+2620:fe::fe dns.quad9.net
+#Alibaba
+223.5.5.5 dns.alidns.com
+2400:3200:baba::1 dns.alidns.com
+#OpenDNS
+146.112.41.2 doh.opendns.com
+2620:119:fc::2 doh.opendns.com
+#CleanBrowsing
+185.228.168.168 doh.cleanbrowsing.org
+#Cloudflare_DoH
+104.16.249.249 cloudflare-dns.com
+2606:4700::6810:f9f9 cloudflare-dns.com
+#Wikimedia
+185.71.138.138 wikimedia-dns.org
+2001:67c:930::1 wikimedia-dns.org
+#Control_D
+76.76.2.11 freedns.controld.com
+2606:1a40::11 freedns.controld.com
+#Surfshark
+194.169.169.169 dns.surfsharkdns.com
+2a09:a707:169:: dns.surfsharkdns.com

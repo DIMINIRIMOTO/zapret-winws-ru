@@ -32,13 +32,13 @@
 2620:119:fc::2 doh.opendns.com
 #CleanBrowsing
 185.228.168.168 doh.cleanbrowsing.org
-#Cloudflare_DoH
+#CloudflareDoH
 104.16.249.249 cloudflare-dns.com
 2606:4700::6810:f9f9 cloudflare-dns.com
 #Wikimedia
 185.71.138.138 wikimedia-dns.org
 2001:67c:930::1 wikimedia-dns.org
-#Control_D
+#ControlD
 76.76.2.11 freedns.controld.com
 2606:1a40::11 freedns.controld.com
 #Surfshark

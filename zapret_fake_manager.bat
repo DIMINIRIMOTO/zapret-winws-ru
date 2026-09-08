@@ -68,7 +68,7 @@ echo ===================================================
 echo               ZAPRET FAKE MANAGER
 echo ===================================================
 echo.
-echo STATUS:
+echo ACTIVE FAKES:
 echo %STATUS_DISCORD%
 echo %STATUS_GAME%
 echo.

@@ -103,8 +103,8 @@ echo.
 reg query "HKLM\SYSTEM\CurrentControlSet\Services\zapret" /s 2>nul
 
 if %errorlevel% neq 0 (
-    echo Zapret service not found in the registry.
-    echo It may be installed under a different name or deleted.
+    echo [info] Zapret service not found in the registry.
+    echo [info] It may be installed under a different name or deleted.
 )
 
 echo.

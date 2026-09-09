@@ -31,7 +31,7 @@ goto menu
 
 :install
 call zapret_manager.bat zapret_set_ts
-call zapret_manager.bat load_game_filter
+call zapret_manager.bat zapret_game_init
 echo:
 set BIN_PATH=%~dp0bins\
 set ARGS=^
@@ -50,7 +50,7 @@ exit /b
 
 :run
 call zapret_manager.bat zapret_set_ts
-call zapret_manager.bat load_game_filter
+call zapret_manager.bat zapret_game_init
 echo:
 set BIN=%~dp0bins\
 cd /d %BIN%

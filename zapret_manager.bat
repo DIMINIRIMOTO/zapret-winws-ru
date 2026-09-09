@@ -1,6 +1,6 @@
 @echo off
 ::LOAD_GAME_FILTER
-if "%~1"=="load_game_filter" (
+if "%~1"=="zapret_game_init" (
     call :game_switch_status
     exit /b
 )

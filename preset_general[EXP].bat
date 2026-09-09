@@ -11,7 +11,7 @@ if %errorlevel% neq 0 (
 cd /d "%~dp0"
 ::START_ZAPRET
 call zapret_manager.bat zapret_set_ts
-call zapret_manager.bat load_game_filter
+call zapret_manager.bat zapret_game_init
 echo:
 set BIN=%~dp0bins\
 cd /d %BIN%

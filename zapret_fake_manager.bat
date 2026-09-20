@@ -96,11 +96,14 @@ echo.
 
 set "count=0"
 for %%F in ("%SOURCE_DIR%\*.bin") do (
-    if /i "%%~nxF" NEQ "%DISCORD_TARGET%" (
-        if /i "%%~nxF" NEQ "%GAME_TARGET%" (
-            set /a count+=1
-            set "fake[!count!]=%%~nxF"
-            echo !count!. %%~nxF
+    set "filename=%%~nxF"
+    if /i "!filename!" NEQ "%DISCORD_TARGET%" (
+        if /i "!filename!" NEQ "%GAME_TARGET%" (
+            if /i "!filename:~0,3!" NEQ "tls" (
+                set /a count+=1
+                set "fake[!count!]=%%~nxF"
+                echo !count!. %%~nxF
+            )
         )
     )
 )

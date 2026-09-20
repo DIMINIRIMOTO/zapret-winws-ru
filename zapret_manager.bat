@@ -134,15 +134,20 @@ if !errorlevel!==0 (
 echo:
 
 ::CLEAR_DNS_CACHE
+set "answer0="
 set /p answer0=Want to clear Windows DNS cache? (YES/NO): 
 
 if /i "%answer0%"=="YES" (
     echo [info] Clearing DNS cache...
     call ipconfig /flushdns >nul 2>&1
     echo [info] DNS cache cleared.
-) else (
-    echo [info] Operation canceled.
+    echo:
+    pause
+    goto menu
 )
+
+echo [info] Operation canceled.
+echo:
 ::EXIT
 pause
 goto menu

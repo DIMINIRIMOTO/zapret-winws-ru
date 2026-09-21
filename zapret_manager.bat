@@ -39,7 +39,7 @@ echo 7. Zapret service info (debug)
 echo 8. Discord cache cleaner (all)
 echo 9. Exit
 echo ==========================================
-set /p menu_choice=Enter option number (1-10): 
+set /p menu_choice=Enter option number (1-9): 
 ::SELECT
 if "%menu_choice%"=="1" goto game_switch
 if "%menu_choice%"=="2" goto ipset_switch

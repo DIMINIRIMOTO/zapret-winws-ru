@@ -5,6 +5,7 @@ twitch.tv
 steampowered.com
 steamcommunity.com
 steamusercontent.com
+steamstatic.com
 nvidia.com
 msi.com
 marketplace.visualstudio.com

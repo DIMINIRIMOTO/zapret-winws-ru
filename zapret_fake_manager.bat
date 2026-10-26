@@ -2,7 +2,7 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-:: Check for Administrator privileges
+::(*_*)::
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     cls
@@ -13,22 +13,22 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-:: Change directory to where the batch file is located
+::(*_*)::
 cd /d "%~dp0"
 
-:: Set path to the log file inside your bins folder
+::(*_*)::
 set "LOG_FILE=%~dp0bins\zapret_fake.status"
 set "DISCORD_TARGET=ACTIVE_DISCORD_UDP.bin"
 set "GAME_TARGET=ACTIVE_GAME_UDP.bin"
 
-:: Initialize default status variables
+::(*_*)::
 set "STATUS_DISCORD=Discord UDP (Voice): [Not selected]"
 set "STATUS_GAME=GameFilter UDP: [Not selected]"
 
 echo Searching for "files" folder...
 set "SOURCE_DIR="
 
-:: Fast search for a folder ending with \files
+::(*_*)::
 for /f "delims=" %%D in ('dir /b /s /ad 2^>nul ^| findstr /i "\\files$"') do (
     set "SOURCE_DIR=%%D"
     goto :FOUND_DIR
@@ -44,12 +44,12 @@ if not defined SOURCE_DIR (
     exit
 )
 
-:: CHECK FOR ACTIVE FAKES AND CLEAN LOG
+::(*_*)::
 if not exist "%SOURCE_DIR%\%DISCORD_TARGET%" if not exist "%SOURCE_DIR%\%GAME_TARGET%" (
     if exist "%LOG_FILE%" del /f /q "%LOG_FILE%" >nul
 )
 
-:: Load statuses from log at startup (if log survived the check)
+::(*_*)::
 if exist "%LOG_FILE%" (
     for /f "usebackq delims=" %%A in ("%LOG_FILE%") do (
         set "line=%%A"
@@ -58,7 +58,7 @@ if exist "%LOG_FILE%" (
     )
 )
 
-:: Reset status in interface if one of the target files was manually deleted
+::(*_*)::
 if not exist "%SOURCE_DIR%\%DISCORD_TARGET%" set "STATUS_DISCORD=Discord UDP (Voice): [Not selected]"
 if not exist "%SOURCE_DIR%\%GAME_TARGET%" set "STATUS_GAME=GameFilter UDP: [Not selected]"
 
@@ -129,21 +129,21 @@ if not defined fake[%fake_choice%] (
 
 set "SELECTED_FAKE=!fake[%fake_choice%]!"
 
-:: Copy file inside %SOURCE_DIR% folder
+::(*_*)::
 copy /y "%SOURCE_DIR%\%SELECTED_FAKE%" "%SOURCE_DIR%\%TARGET_NAME%" >nul
 
 if %errorlevel%==0 (
     echo.
     echo [SUCCESS] File %SELECTED_FAKE% copied as %TARGET_NAME%
     
-    :: Form the status string
+    ::(*_*)::
     if "%SERVICE_LABEL%"=="Discord UDP (Voice)" (
         set "STATUS_DISCORD=Discord UDP (Voice): %SELECTED_FAKE%"
     ) else (
         set "STATUS_GAME=GameFilter UDP: %SELECTED_FAKE%"
     )
     
-    :: Write to log inside the existing bins folder
+    ::(*_*)::
     echo !STATUS_DISCORD!> "%LOG_FILE%"
     echo !STATUS_GAME!>> "%LOG_FILE%"
     

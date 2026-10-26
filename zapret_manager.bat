@@ -1,30 +1,30 @@
 @echo off
-::LOAD_GAME_FILTER
+::(*_*)::
 if "%~1"=="zapret_game_init" (
     call :game_switch_status
     exit /b
 )
-::LOAD_TCP
+::(*_*)::
 if "%~1"=="zapret_set_ts" (
     call :tcp_enable
     exit /b
 )
-::ADMIN_USER
+::(*_*)::
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo [Error] Please run this file as Administrator.
     pause
     exit /b
 )
-::LOCAL_BATCH
+::(*_*)::
 setlocal EnableDelayedExpansion
-::MENU
+::(*_*)::
 :menu
 cls
-::LOAD_STATUS
+::(*_*)::
 call :game_switch_status
 call :ipset_switch_status
-::NULL
+::(*_*)::
 set "menu_choice=null"
 echo ==========================================
 echo              ZAPRET MANAGER
@@ -41,7 +41,7 @@ echo 9. Network Reset (default settings)
 echo 10. Exit
 echo ==========================================
 set /p menu_choice=Enter option number (1-10): 
-::SELECT
+::(*_*)::
 if "%menu_choice%"=="1" goto game_switch
 if "%menu_choice%"=="2" goto ipset_switch
 if "%menu_choice%"=="3" goto delete_zapret
@@ -52,62 +52,62 @@ if "%menu_choice%"=="7" goto service_info
 if "%menu_choice%"=="8" goto discord_cache
 if "%menu_choice%"=="9" goto zapret_reset
 if "%menu_choice%"=="10" goto exit
-::MENU
+::(*_*)::
 goto menu
 
-::NETWORK_RESET
+::(*_*)::
 :zapret_reset
 @echo off
 netsh winsock reset >nul 2>&1
 netsh int ip reset all >nul 2>&1
 netsh winhttp reset proxy >nul 2>&1
 ipconfig /flushdns >nul 2>&1
-::TEXT
+::(*_*)::
 echo [info] Network has been reset. Please restart your PC.
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::DISCORD_CACHE_REMOVE
+::(*_*)::
 :discord_cache
 chcp 437 > nul
 cls
-::MSG_INFO
+::(*_*)::
 set /p answer=Clear Discord cache (All versions)? (YES/NO):
-::Discord_CLOSED
+::(*_*)::
 if /i "%answer%"=="YES" (
     echo [info] Shutting down all Discord applications...
     taskkill /IM Discord.exe /F >nul 2>&1
     taskkill /IM DiscordPTB.exe /F >nul 2>&1
     taskkill /IM DiscordCanary.exe /F >nul 2>&1
     taskkill /IM DiscordDevelopment.exe /F >nul 2>&1
-	::Jdun(2s)
+	::(*_*)::
     echo [info] Waiting for applications to close...
     timeout /t 2 >nul
-	::TEXT_INFO
+	::(*_*)::
     echo [info] Clearing cache for all installed Discord versions...
-	::Discord
+	::(*_*)::
     if exist "%APPDATA%\discord" rd /s /q "%APPDATA%\discord" 2>nul
-	::Discord PTB
+	::(*_*)::
     if exist "%APPDATA%\discordptb" rd /s /q "%APPDATA%\discordptb" 2>nul
-	::Discord Canary
+	::(*_*)::
     if exist "%APPDATA%\discordcanary" rd /s /q "%APPDATA%\discordcanary" 2>nul
-	::Discord Development
+	::(*_*)::
     if exist "%APPDATA%\discorddevelopment" rd /s /q "%APPDATA%\discorddevelopment" 2>nul
-	::INFO_OPERATION
+	::(*_*)::
     echo [info] Operation completed.
 ) else (
     echo [info] Operation canceled.
 )
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::ZAPRET_SERVICE_INFO
+::(*_*)::
 :service_info
 chcp 437 > nul
 cls
-::Otladka
+::(*_*)::
 echo ===================================================
 echo           Zapret: Service Info
 echo ===================================================
@@ -122,15 +122,15 @@ if %errorlevel% neq 0 (
 
 echo.
 echo ===================================================
-::KoHec
+::(*_*)::
 pause
 goto menu
 
-::ZAPRET_DIAGNOSTICS
+::(*_*)::
 :tcp_diagnostics
 chcp 437 > nul
 cls
-::TCP_DIAGNOSTICS
+::(*_*)::
 netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul
 if !errorlevel!==0 (
     echo [info] No errors found.
@@ -143,34 +143,34 @@ if !errorlevel!==0 (
         echo [info] Error not fixed, please contact support.
     )
 )
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::TCP_WINDOWS
+::(*_*)::
 :tcp_enable
 chcp 437 > nul
 netsh interface tcp show global | findstr /i "timestamps" | findstr /i "enabled" > nul || netsh interface tcp set global timestamps=enabled > nul 2>&1
 exit /b
 
-::GAME_FILTER_STATUS
+::(*_*)::
 :game_switch_status
 chcp 437 > nul
-::FILES
+::(*_*)::
 set "gameFlagFile=%~dp0bins\game_filter.status"
-::LOAD_DISABLED_MODE
+::(*_*)::
 if not exist "%gameFlagFile%" (
     set "GameFilterStatus=disabled"
     set "GameFilterTCP=12"
     set "GameFilterUDP=12"
     exit /b
 )
-::LOAD_DEFAULT_MODE
+::(*_*)::
 set "GameFilterMode="
 for /f "usebackq delims=" %%A in ("%gameFlagFile%") do (
     if not defined GameFilterMode set "GameFilterMode=%%A"
 )
-::ALL_MODS
+::(*_*)::
 if /i "%GameFilterMode%"=="all" (
     set "GameFilterStatus=enabled [TCP/UDP]"
     set "GameFilterTCP=1024-65535"
@@ -186,11 +186,11 @@ if /i "%GameFilterMode%"=="all" (
 )
 exit /b
 
-::GAME_FILTER_SWITCHER
+::(*_*)::
 :game_switch
 chcp 437 > nul
 cls
-::MENU
+::(*_*)::
 echo ==========================================
 echo Game filter mode selection:
 echo   0. disabled
@@ -198,11 +198,11 @@ echo   1. enabled [TCP/UDP]
 echo   2. enabled [TCP]
 echo   3. enabled [UDP]
 echo ==========================================
-::NULL
+::(*_*)::
 set "GameFilterChoice=0"
 set /p "GameFilterChoice=Mode selection (0-3)"
 if "%GameFilterChoice%"=="" set "GameFilterChoice=0"
-::MODE
+::(*_*)::
 if "%GameFilterChoice%"=="0" (
     if exist "%gameFlagFile%" (
         del /f /q "%gameFlagFile%"
@@ -220,19 +220,19 @@ if "%GameFilterChoice%"=="0" (
     pause
     goto menu
 	)
-::TEXT	
+::(*_*)::	
 echo [info] Changes applied. Please restart the application.
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::IPSET_STATUS
+::(*_*)::
 :ipset_switch_status
 chcp 437 > nul
-::FILES
+::(*_*)::
 set "listFile=%~dp0files\ipset-general.txt"
 for /f %%i in ('type "%listFile%" 2^>nul ^| find /c /v ""') do set "lineCount=%%i"
-::MODE
+::(*_*)::
 if !lineCount!==0 (
     set "IPsetStatus=empty"
 ) else (
@@ -245,14 +245,14 @@ if !lineCount!==0 (
 )
 exit /b
 
-::IPSET_FILTER_SWITCHER
+::(*_*)::
 :ipset_switch
 chcp 437 > nul
 cls
-::FILES
+::(*_*)::
 set "listFile=%~dp0files\ipset-general.txt"
 set "backupFile=%listFile%.old"
-::MODE
+::(*_*)::
 if "%IPsetStatus%"=="enabled" (
     echo [info] Changes applied. Please restart the application.
     if not exist "%backupFile%" (
@@ -280,11 +280,11 @@ if "%IPsetStatus%"=="enabled" (
         goto menu
     )
 )
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::DELETE_APP
+::(*_*)::
 :delete_zapret
 @echo off
 set SRVCNAME=zapret
@@ -294,24 +294,24 @@ net stop "WinDivert" >nul 2>&1
 sc delete "WinDivert" >nul 2>&1
 net stop "WinDivert14" >nul 2>&1
 sc delete "WinDivert14" >nul 2>&1
-::TEXT
+::(*_*)::
 echo [info] Application has been deleted.
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::HOSTS_UPDATE
+::(*_*)::
 :hosts_run
 @echo off
-::LOAD_FILES
+::(*_*)::
 set "sourceFile=%~dp0bins\hosts_update.run"
 set "hostFile=%SystemRoot%\System32\drivers\etc\hosts"
-::LOGS
+::(*_*)::
 if not exist "%sourceFile%" (
     echo Files with new lines not found: %sourceFile%
     goto :EOF
 )
-::HOSTS_RUN
+::(*_*)::
 echo. >> "%hostFile%"
 ::
 for /f "usebackq delims=" %%A in ("%sourceFile%") do (
@@ -320,34 +320,34 @@ for /f "usebackq delims=" %%A in ("%sourceFile%") do (
         echo %%A>>"%hostFile%"
     )
 )
-::TEXT
+::(*_*)::
 echo [info] Hosts file successfully modified.
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::HOSTS_UPDATE_REMOVE
+::(*_*)::
 :hosts_undo
 @echo off
-::LOCAL_BATCH
+::(*_*)::
 setlocal
-::LOAD_FILES
+::(*_*)::
 set "hostFile=%SystemRoot%\System32\drivers\etc\hosts"
 set "replacementFile=%~dp0bins\hosts_update.undo"
-::LOGS
+::(*_*)::
 if not exist "%replacementFile%" (
     echo Files %replacementFile% not found.
     goto :EOF
 )
-::HOSTS_UNDO
+::(*_*)::
 copy /Y "%replacementFile%" "%hostFile%" >nul
-::TEXT
+::(*_*)::
 echo [info] Hosts file restored to default state.
-::EXIT
+::(*_*)::
 pause
 goto menu
 
-::END
+::(*_*)::
 :exit
 endlocal
 exit /b

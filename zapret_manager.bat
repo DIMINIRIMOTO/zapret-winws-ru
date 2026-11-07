@@ -294,8 +294,8 @@ net stop "WinDivert" >nul 2>&1
 sc delete "WinDivert" >nul 2>&1
 net stop "WinDivert14" >nul 2>&1
 sc delete "WinDivert14" >nul 2>&1
-net stop "monkey" >nul 2>&1
-sc delete "monkey" >nul 2>&1
+net stop "Monkey" >nul 2>&1
+sc delete "Monkey" >nul 2>&1
 ::(*_*)::
 echo [info] Application has been deleted.
 ::(*_*)::

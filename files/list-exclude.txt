@@ -59,6 +59,8 @@ habr.com
 3dnews.ru
 microsoft.com
 microsoftonline.com
+msftconnecttest.com
+msftncsi.com
 live.com
 sharepoint.com
 minecraft.net

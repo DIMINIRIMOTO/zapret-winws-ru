@@ -1,0 +1,25 @@
+### Discord
+DiscordMain           = "https://discord.com"
+DiscordGateway        = "https://discord.gg"
+DiscordCDN            = "https://discordapp.com"
+DiscordUpdates        = "https://discord.com"
+
+### YouTube
+YouTubeWeb            = "https://youtube.com"
+YouTubeShort          = "https://youtu.be"
+YouTubeImage          = "https://ytimg.com"
+YouTubeVideoRedirect  = "https://googlevideo.com"
+
+### Google
+GoogleMain            = "https://google.com"
+GoogleGstatic         = "https://gstatic.com"
+
+### Cloudflare
+CloudflareWeb         = "https://cloudflare.com"
+CloudflareCDN         = "https://cloudflare.com"
+
+### Public DNS
+CloudflareDNS1111     = "PING:1.1.1.1"
+CloudflareDNS1001     = "PING:1.0.0.1"
+GoogleDNS8888         = "PING:8.8.8.8"
+GoogleDNS8844         = "PING:8.8.4.4"

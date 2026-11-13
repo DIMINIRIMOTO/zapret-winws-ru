@@ -165,7 +165,7 @@ set "HOST=!HOST:https://=!"
 set "HOST=!HOST:http://=!"
 
 <nul set /p="Checking %~1 (%~2)... "
-curl -s -I -m 4 "%~2" >nul
+curl -s -I -m 4 --connect-timeout 2 "%~2" >nul
 if !errorlevel! equ 0 (
     set "HTTP_RES=TLS: OK"
     set /a OK_CNT+=1

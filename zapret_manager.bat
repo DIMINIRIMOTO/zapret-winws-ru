@@ -149,7 +149,7 @@ goto menu
 
 :_zt_CheckPing
 <nul set /p="Checking %~1 (%~2)... "
-ping -n 1 -w 1500 %~2 >nul
+ping -4 -n 2 -w 1000 %~2 2>nul | find /i "TTL=" >nul
 if !errorlevel! equ 0 (
     set /a OK_CNT+=1
     echo [OK]
@@ -187,7 +187,7 @@ if not "!HTTP_CODE!"=="000" (
     set /a ERR_CNT+=1
 )
 
-ping -n 1 -w 1500 !HOST! >nul 2>&1
+ping -4 -n 2 -w 1000 !HOST! 2>nul | find /i "TTL=" >nul
 if !errorlevel! equ 0 (
     set "PING_RES=Ping: OK"
 ) else (

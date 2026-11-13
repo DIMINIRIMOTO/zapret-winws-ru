@@ -17,7 +17,7 @@ if %errorlevel% neq 0 (
     exit /b
 )
 ::(*_*)::
-setlocal EnableDelayedExpansion
+setlocal enabledelayedexpansion
 ::(*_*)::
 :menu
 cls
@@ -32,15 +32,17 @@ echo ==========================================
 echo 1. Game filter (%GameFilterStatus%)
 echo 2. Ipset filter (%IPsetStatus%)
 echo 3. Delete App and Services
-echo 4. Hosts update (recommended)
-echo 5. Restore hosts update (default windows)
-echo 6. Timestamps diagnostics (quick)
-echo 7. Zapret service info (debug)
-echo 8. Discord cache cleaner (all)
-echo 9. Network Reset (default settings)
-echo 10. Exit
+echo 4. Hosts update (Recommended)
+echo 5. Restore hosts update (Default Windows)
+echo 6. Timestamps diagnostics (Quick)
+echo 7. Zapret service info (Debug)
+echo 8. Discord cache cleaner (All)
+echo 9. Network Reset (Default Settings)
+echo 10. Check Bypass Status (Discord, YouTube, DNS)
+echo 11. Clear DNS Cache (Windows System)
+echo 12. Exit
 echo ==========================================
-set /p menu_choice=Enter option number (1-10): 
+set /p menu_choice=Enter option number (1-12): 
 ::(*_*)::
 if "%menu_choice%"=="1" goto game_switch
 if "%menu_choice%"=="2" goto ipset_switch
@@ -51,9 +53,138 @@ if "%menu_choice%"=="6" goto tcp_diagnostics
 if "%menu_choice%"=="7" goto service_info
 if "%menu_choice%"=="8" goto discord_cache
 if "%menu_choice%"=="9" goto zapret_reset
-if "%menu_choice%"=="10" goto exit
+if "%menu_choice%"=="10" goto zapret_test
+if "%menu_choice%"=="11" goto flush_dns
+if "%menu_choice%"=="12" goto exit
 ::(*_*)::
 goto menu
+
+::(*_*)::
+:flush_dns
+ipconfig /flushdns >nul 2>&1
+echo.
+echo [info] DNS cache successfully cleared.
+echo.
+pause
+goto menu
+
+::(*_*)::
+:zapret_test
+::(*_*)::
+setlocal enabledelayedexpansion
+::(*_*)::
+set "ZAPRET_ACTIVE=0"
+tasklist /fi "imagename eq winws.exe" 2>nul | find /i "winws.exe" >nul
+if !errorlevel! equ 0 set "ZAPRET_ACTIVE=1"
+
+::(*_*)::
+sc query "zapret" 2>nul | find /i "RUNNING" >nul
+if !errorlevel! equ 0 set "ZAPRET_ACTIVE=1"
+
+::(*_*)::
+if !ZAPRET_ACTIVE! equ 0 (
+    echo.
+    echo ==================================================
+    echo [info] Zapret is not active!
+    echo ==================================================
+    echo.
+    pause
+    endlocal
+    goto menu
+)
+
+::(*_*)::
+set "FILE=%~dp0bins\zapret_targets.test"
+
+if not exist "%FILE%" (
+    echo.
+    echo [info] zapret_targets.test is missing. Please redownload the application.
+    echo.
+    pause
+    endlocal
+    goto menu
+)
+
+echo.
+echo ==================================================
+echo         CONNECTION ^& BYPASS CHECK
+echo ==================================================
+echo.
+
+set /a OK_CNT=0
+set /a ERR_CNT=0
+set /a ALL_CNT=0
+
+for /f "usebackq tokens=1,* delims==" %%A in ("%FILE%") do (
+    set "KEY=%%A"
+    set "VAL=%%B"
+
+    ::(*_*)::
+    set "KEY=!KEY: =!"
+
+    ::(*_*)::
+    if defined KEY (
+        if not "!KEY:~0,1!"=="#" (
+            set /a ALL_CNT+=1
+            ::(*_*)::
+            set "VAL=!VAL:"=!"
+            for /f "tokens=* delims= " %%X in ("!VAL!") do set "VAL=%%X"
+
+            if "!VAL:~0,5!"=="PING:" (
+                set "IP=!VAL:~5!"
+                call :_zt_CheckPing "!KEY!" "!IP!"
+            ) else (
+                call :_zt_CheckWeb "!KEY!" "!VAL!"
+            )
+        )
+    )
+)
+
+echo.
+echo ==================================================
+echo RESULT: !OK_CNT!/!ALL_CNT! OK  ^|  !ERR_CNT! Failed
+echo ==================================================
+echo.
+pause
+endlocal
+goto menu
+
+:_zt_CheckPing
+<nul set /p="Checking %~1 (%~2)... "
+ping -n 1 -w 1500 %~2 >nul
+if !errorlevel! equ 0 (
+    set /a OK_CNT+=1
+    echo [OK]
+) else (
+    set /a ERR_CNT+=1
+    echo [FAIL]
+)
+exit /b
+
+:_zt_CheckWeb
+set "HOST=%~2"
+set "HOST=!HOST:https://=!"
+set "HOST=!HOST:http://=!"
+
+<nul set /p="Checking %~1 (%~2)... "
+curl -s -I -m 4 "%~2" >nul
+if !errorlevel! equ 0 (
+    set "HTTP_RES=TLS: OK"
+    set /a OK_CNT+=1
+) else (
+    set "HTTP_RES=TLS: FAIL"
+    set /a ERR_CNT+=1
+)
+
+ping -n 1 -w 1500 !HOST! >nul
+if !errorlevel! equ 0 (
+    set "PING_RES=Ping: OK"
+) else (
+    set "PING_RES=Ping: FAIL"
+)
+
+echo [!HTTP_RES! ^| !PING_RES!]
+exit /b
 
 ::(*_*)::
 :zapret_reset

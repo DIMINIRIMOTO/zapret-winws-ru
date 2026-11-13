@@ -160,13 +160,26 @@ if !errorlevel! equ 0 (
 exit /b
 
 :_zt_CheckWeb
+set "URL=%~2"
 set "HOST=%~2"
 set "HOST=!HOST:https://=!"
 set "HOST=!HOST:http://=!"
+for /f "tokens=1 delims=/" %%H in ("!HOST!") do set "HOST=%%H"
+for /f "tokens=1 delims=:" %%H in ("!HOST!") do set "HOST=%%H"
 
-<nul set /p="Checking %~1 (%~2)... "
-curl -s -I -m 4 --connect-timeout 2 "%~2" >nul
-if !errorlevel! equ 0 (
+<nul set /p="Checking %~1 (!HOST!)... "
+
+set "HTTP_CODE=000"
+
+::(*_*)::
+for /f %%C in ('curl -s -L -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!URL!" 2^>nul') do set "HTTP_CODE=%%C"
+
+::(*_*)::
+if "!HTTP_CODE!"=="000" (
+    for /f %%C in ('curl -s -L --http1.1 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!URL!" 2^>nul') do set "HTTP_CODE=%%C"
+)
+
+if not "!HTTP_CODE!"=="000" (
     set "HTTP_RES=TLS: OK"
     set /a OK_CNT+=1
 ) else (
@@ -174,7 +187,7 @@ if !errorlevel! equ 0 (
     set /a ERR_CNT+=1
 )
 
-ping -n 1 -w 1500 !HOST! >nul
+ping -n 1 -w 1500 !HOST! >nul 2>&1
 if !errorlevel! equ 0 (
     set "PING_RES=Ping: OK"
 ) else (

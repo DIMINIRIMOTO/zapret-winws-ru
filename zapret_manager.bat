@@ -84,9 +84,7 @@ if !errorlevel! equ 0 set "ZAPRET_ACTIVE=1"
 ::(*_*)::
 if !ZAPRET_ACTIVE! equ 0 (
     echo.
-    echo ==================================================
     echo [info] Zapret is not active!
-    echo ==================================================
     echo.
     pause
     endlocal

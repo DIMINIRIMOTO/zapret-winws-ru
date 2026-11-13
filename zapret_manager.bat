@@ -34,7 +34,7 @@ echo 2. Ipset filter (%IPsetStatus%)
 echo 3. Delete App and Services
 echo 4. Hosts update (recommended)
 echo 5. Restore hosts update (default windows)
-echo 6. Zapret diagnostics (lite)
+echo 6. Timestamps diagnostics (quick)
 echo 7. Zapret service info (debug)
 echo 8. Discord cache cleaner (all)
 echo 9. Network Reset (default settings)

@@ -71,7 +71,7 @@ goto menu
 ::(*_*)::
 :zapret_test
 ::(*_*)::
-setlocal enabledelayedexpansion
+setlocal
 ::(*_*)::
 set "ZAPRET_ACTIVE=0"
 tasklist /fi "imagename eq winws.exe" 2>nul | find /i "winws.exe" >nul

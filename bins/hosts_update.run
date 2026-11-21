@@ -39,12 +39,4 @@
 2620:119:fc::2 doh.opendns.com
 2001:67c:930::1 wikimedia-dns.org
 2a09:a707:169:: dns.surfsharkdns.com
-#----------------YouTube------------------#
-0.0.0.0 rr7---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr6---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr5---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr4---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr3---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr2---sn-gvnuxaxjvh-n8ml.googlevideo.com
-0.0.0.0 rr1---sn-gvnuxaxjvh-n8ml.googlevideo.com
 #-----------------------------------------#

@@ -150,7 +150,7 @@ set "PAD_NAME=!PAD_NAME:~0,21!"
 
 ::(*_*)::
 set "PING_VAL="
-for /f "tokens=*" %%A in ('ping -4 -n 2 -w 1000 !HOST! 2^>nul ^| findstr /i "TTL="') do (
+for /f "tokens=*" %%A in ('ping -n 1 -w 1000 !HOST! 2^>nul ^| findstr /i "TTL="') do (
     for %%B in (%%A) do (
         set "TOK=%%B"
         echo !TOK! | findstr /r "[0-9][mм][sс]" >nul && set "PING_VAL=!TOK!"
@@ -178,21 +178,14 @@ set "HOST=%~2"
 set "HOST=!HOST:https://=!"
 set "HOST=!HOST:http://=!"
 for /f "tokens=1 delims=/" %%H in ("!HOST!") do set "HOST=%%H"
-for /f "tokens=1 delims=:" %%H in ("!HOST!") do set "HOST=%%H"
 
 ::(*_*)::
 set "PAD_NAME=!NAME!                     "
 set "PAD_NAME=!PAD_NAME:~0,21!"
 
 ::(*_*)::
-set "HTTP_URL=!URL:https://=http://!"
 set "HTTP_CODE=000"
-::(*_*)::
-for /f %%C in ('curl -s -L -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTP_URL!" 2^>nul') do set "HTTP_CODE=%%C"
-::(*_*)::
-if "!HTTP_CODE!"=="000" (
-    for /f %%C in ('curl -s -L --http1.1 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTP_URL!" 2^>nul') do set "HTTP_CODE=%%C"
-)
+for /f %%C in ('curl.exe -q --noproxy * -I -s -m 4 --connect-timeout 2 -o NUL -w %%{http_code} --show-error --http1.1 "!URL!" 2^>nul') do set "HTTP_CODE=%%C"
 
 if not "!HTTP_CODE!"=="000" (
     set "HTTP_RES=HTTP:OK"
@@ -203,14 +196,8 @@ set "PAD_HTTP=!HTTP_RES!           "
 set "PAD_HTTP=!PAD_HTTP:~0,11!"
 
 ::(*_*)::
-set "HTTPS_URL=!URL:http://=https://!"
 set "TLS12_CODE=000"
-::(*_*)::
-for /f %%C in ('curl -s -L --tlsv1.2 --tls-max 1.2 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTPS_URL!" 2^>nul') do set "TLS12_CODE=%%C"
-::(*_*)::
-if "!TLS12_CODE!"=="000" (
-    for /f %%C in ('curl -s -L --tlsv1.2 --tls-max 1.2 --http1.1 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTPS_URL!" 2^>nul') do set "TLS12_CODE=%%C"
-)
+for /f %%C in ('curl.exe -q --noproxy * -I -s -m 4 --connect-timeout 2 -o NUL -w %%{http_code} --show-error --tlsv1.2 --tls-max 1.2 "!URL!" 2^>nul') do set "TLS12_CODE=%%C"
 
 if not "!TLS12_CODE!"=="000" (
     set "TLS12_RES=TLS1.2:OK"
@@ -222,12 +209,7 @@ set "PAD_T12=!PAD_T12:~0,13!"
 
 ::(*_*)::
 set "TLS13_CODE=000"
-::(*_*)::
-for /f %%C in ('curl -s -L --tlsv1.3 --tls-max 1.3 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTPS_URL!" 2^>nul') do set "TLS13_CODE=%%C"
-::(*_*)::
-if "!TLS13_CODE!"=="000" (
-    for /f %%C in ('curl -s -L --tlsv1.3 --tls-max 1.3 --http1.1 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!HTTPS_URL!" 2^>nul') do set "TLS13_CODE=%%C"
-)
+for /f %%C in ('curl.exe -q --noproxy * -I -s -m 4 --connect-timeout 2 -o NUL -w %%{http_code} --show-error --tlsv1.3 --tls-max 1.3 "!URL!" 2^>nul') do set "TLS13_CODE=%%C"
 
 if not "!TLS13_CODE!"=="000" (
     set "TLS13_RES=TLS1.3:OK"
@@ -238,15 +220,7 @@ set "PAD_T13=!TLS13_RES!             "
 set "PAD_T13=!PAD_T13:~0,13!"
 
 ::(*_*)::
-set "MAIN_CODE=000"
-::(*_*)::
-for /f %%C in ('curl -s -L -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!URL!" 2^>nul') do set "MAIN_CODE=%%C"
-::(*_*)::
-if "!MAIN_CODE!"=="000" (
-    for /f %%C in ('curl -s -L --http1.1 -o nul -w "%%{http_code}" -m 4 --connect-timeout 3 "!URL!" 2^>nul') do set "MAIN_CODE=%%C"
-)
-
-if not "!MAIN_CODE!"=="000" (
+if not "!HTTP_CODE!"=="000" (
     set /a OK_CNT+=1
 ) else (
     set /a ERR_CNT+=1
@@ -254,7 +228,7 @@ if not "!MAIN_CODE!"=="000" (
 
 ::(*_*)::
 set "PING_VAL="
-for /f "tokens=*" %%A in ('ping -4 -n 2 -w 1000 !HOST! 2^>nul ^| findstr /i "TTL="') do (
+for /f "tokens=*" %%A in ('ping -n 1 -w 1000 !HOST! 2^>nul ^| findstr /i "TTL="') do (
     for %%B in (%%A) do (
         set "TOK=%%B"
         echo !TOK! | findstr /r "[0-9][mм][sс]" >nul && set "PING_VAL=!TOK!"

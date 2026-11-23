@@ -103,6 +103,9 @@ if not exist "%FILE%" (
     goto menu
 )
 
+set "OK_CNT=0"
+set "ERR_CNT=0"
+
 echo.
 echo ============================================================================
 echo                         CONNECTION ^& BYPASS CHECK
@@ -133,7 +136,11 @@ for /f "usebackq tokens=1,* delims==" %%A in ("%FILE%") do (
     )
 )
 
+set /a TOTAL_CNT=OK_CNT+ERR_CNT
+
 echo.
+echo ============================================================================
+echo   Summary: Total: !TOTAL_CNT! ^| OK: !OK_CNT! ^| Errors: !ERR_CNT!
 echo ============================================================================
 echo.
 pause

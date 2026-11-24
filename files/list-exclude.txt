@@ -4,6 +4,7 @@ ttvnw.net
 twitch.tv
 steampowered.com
 steamcommunity.com
+steamcontent.com
 steamusercontent.com
 steamstatic.com
 nvidia.com

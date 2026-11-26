@@ -227,7 +227,12 @@ set "PAD_T13=!TLS13_RES!             "
 set "PAD_T13=!PAD_T13:~0,13!"
 
 ::(*_*)::
-if not "!HTTP_CODE!"=="000" (
+set "ROW_OK=1"
+if "!HTTP_CODE!"=="000" set "ROW_OK=0"
+if "!TLS12_CODE!"=="000" set "ROW_OK=0"
+if "!TLS13_CODE!"=="000" set "ROW_OK=0"
+
+if "!ROW_OK!"=="1" (
     set /a OK_CNT+=1
 ) else (
     set /a ERR_CNT+=1

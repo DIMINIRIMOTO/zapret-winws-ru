@@ -216,13 +216,27 @@ set "PAD_T12=!PAD_T12:~0,13!"
 
 ::(*_*)::
 set "TLS13_CODE=000"
-for /f %%C in ('curl.exe -q --noproxy * -I -s -m 4 --connect-timeout 2 -o NUL -w %%{http_code} --show-error --tlsv1.3 --tls-max 1.3 "!URL!" 2^>nul') do set "TLS13_CODE=%%C"
+set "TLS13_ERR="
+for /f "delims=" %%C in ('curl.exe -q --noproxy * -I -s -m 4 --connect-timeout 2 -o NUL -w "CODE:%%{http_code}" --show-error --tlsv1.3 --tls-max 1.3 "!URL!" 2^>^&1') do (
+    set "LINE=%%C"
+    if "!LINE:~0,5!"=="CODE:" (
+        set "TLS13_CODE=!LINE:~5!"
+    ) else (
+        set "TLS13_ERR=!TLS13_ERR! !LINE!"
+    )
+)
 
 if not "!TLS13_CODE!"=="000" (
     set "TLS13_RES=TLS1.3:OK"
 ) else (
-    set "TLS13_RES=TLS1.3:UNSUP"
+    echo !TLS13_ERR! | findstr /i /c:"not supported" /c:"does not support" /c:"unsupported" /c:"schannel" >nul
+    if !errorlevel! equ 0 (
+        set "TLS13_RES=TLS1.3:UNSUP"
+    ) else (
+        set "TLS13_RES=TLS1.3:ERROR"
+    )
 )
+
 set "PAD_T13=!TLS13_RES!             "
 set "PAD_T13=!PAD_T13:~0,13!"
 
@@ -230,7 +244,7 @@ set "PAD_T13=!PAD_T13:~0,13!"
 set "ROW_OK=1"
 if "!HTTP_CODE!"=="000" set "ROW_OK=0"
 if "!TLS12_CODE!"=="000" set "ROW_OK=0"
-if "!TLS13_CODE!"=="000" set "ROW_OK=0"
+if "!TLS13_RES!"=="TLS1.3:ERROR" set "ROW_OK=0"
 
 if "!ROW_OK!"=="1" (
     set /a OK_CNT+=1

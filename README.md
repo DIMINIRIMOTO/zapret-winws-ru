@@ -1,4 +1,4 @@
-# 🛡️ zapret-winws-ru
+# 🛡️ zapret-winws-ru [📦 АРХИВ]
 
 Утилита для обхода ограничений в РФ на базе оригинального софта [zapret-win-bundle](https://github.com/bol-van/zapret-win-bundle).
 
